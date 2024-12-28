@@ -1,7 +1,8 @@
 package com.greengrocery.Store_Service.controller;
 
 import com.greengrocery.Store_Service.dto.StoreDTO;
-import com.greengrocery.Store_Service.service.StoreService;
+import com.greengrocery.Store_Service.service.impl.StoreServiceImpl;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -15,9 +16,9 @@ import java.util.List;
 @RequestMapping("/api/stores")
 public class StoreController {
 
-    private final StoreService storeService;
+    private final StoreServiceImpl storeService;
 
-    public StoreController(StoreService storeService) {
+    public StoreController(StoreServiceImpl storeService) {
         this.storeService = storeService;
     }
 
@@ -28,7 +29,7 @@ public class StoreController {
     })
     @PostMapping
     public ResponseEntity<StoreDTO> createStore(@RequestBody StoreDTO storeDTO) {
-        StoreDTO createdStore = storeService.createStore(storeDTO);
+        StoreDTO createdStore = storeService.addStore(storeDTO);
         return new ResponseEntity<>(createdStore, HttpStatus.CREATED);
     }
 

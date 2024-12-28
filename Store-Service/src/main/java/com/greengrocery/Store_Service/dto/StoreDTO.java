@@ -10,4 +10,6 @@ public class StoreDTO {
     private String address;
     private String phoneNumber;
     private String email;
+    private boolean active;  // To reflect if the store is active or not
+
 }
